@@ -11,7 +11,6 @@
 </head>
 <body>    
     <button id="clearLocalStorageButton">Clear Format</button>
-    <button id="undoLocalStorageButton">Undo Clear</button>
     <div class="ui container">
         <div class="ui form">
             <div class="ui segment">
@@ -257,31 +256,14 @@ function loadDataFromLocalStorage() {
 
             if (confirmation) {
                 const dataToBackup = localStorage.getItem('metroDeploymentData');
-                localStorage.setItem('metroDeploymentDataBackup', dataToBackup);
                 localStorage.removeItem('metroDeploymentData');
                 alert("Local storage has been cleared.");
-            }
-        }
-
-        function undoClearLocalStorage() {
-            const savedData = localStorage.getItem('metroDeploymentDataBackup');
-            if (savedData) {
-                localStorage.setItem('metroDeploymentData', savedData);
-                alert("Clear action has been undone. Your data is restored.");
-                location.reload();
-            } else {
-                alert("There is no data to restore.");
             }
         }
 
         const clearButton = document.getElementById('clearLocalStorageButton');
         if (clearButton) {
             clearButton.addEventListener('click', clearLocalStorage);
-        }
-
-        const undoButton = document.getElementById('undoLocalStorageButton');
-        if (undoButton) {
-            undoButton.addEventListener('click', undoClearLocalStorage);
         }
     </script>
 </body>
