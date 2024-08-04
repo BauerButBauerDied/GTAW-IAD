@@ -14,40 +14,43 @@
     <div class="ui container">
         <div class="ui form">
             <div class="ui segment">
-                <h2>General Information</h2>
+                <h2>Submission Information</h2>
                 <div class="field">
-                    <label>Name & Assigned K9</label>
+                    <label for="datetimePickerSubmission">Date and Time (If Retroactive)</label>
+                    <div class="four fields">
+                        <div class="field">
+                            <input type="datetime-local" id="datetimePickerSubmission">
+                        </div>
+                        <div class="field">
+                            <button id="nowButtonSubmission">Set to Now</button>
+                        </div>
+                    </div>
+                </div>   
+                <div class="field">
+                    <label>Submitted By</label>
                     <div class="three fields">
                         <div class="field">
-                            <input type="text" placeholder="LSPD Rank Firstname Lastname" id="ICname">
+                            <input type="text" placeholder="Sergeant Firstname Lastname" id="Submitter">
                         </div>
                     </div>
                 </div>
                 <div class="field">
-                    <label for="DivisionalRank">Divisional Rank</label>
+                    <label for="SubmissionType">Type of Submission</label>
                     <div class="three fields">
                         <div class="field">
-                            <div class="ui selection search dropdown" id="DivisionalRankDropdown">
-                                <input type="hidden" name="DivisionalRank" id="DivisionalRankInput">
+                            <div class="ui selection search dropdown" id="SubmissionTypeDropdown">
+                                <input type="hidden" name="SubmissionType" id="SubmissionTypeInput">
                                 <i class="dropdown icon"></i>
-                                <div class="default text">Select Divisional Rank</div>
+                                <div class="default text">Select Submission Type</div>
                                 <div class="menu">
-                                    <div class="item" data-value="Officer in Charge">Officer in Charge</div>
-                                    <div class="item" data-value="Assistant Officer in Charge">Assistant Officer in Charge</div>
-                                    <div class="item" data-value="Chief Supervisor">Chief Supervisor</div>
-                                    <div class="item" data-value="Canine Supervisor">Canine Supervisor</div>
-                                    <div class="item" data-value="Canine Handler">Canine Handler</div>
-                                    <div class="item" data-value="Probationary Canine Handler">Probationary Canine Handler</div>
+                                    <div class="item" data-value="Administrative Interview">Administrative Interview</div>
+                                    <div class="item" data-value="Criminal Interrogation">Criminal Interrogation</div>
+                                    <div class="item" data-value="Criminal Interrogation">Field Statement</div>
+                                    <div class="item" data-value="Voluntary Witness Interview">Voluntary Witness Interview</div>
+                                    <div class="item" data-value="Mandatory Witness Interview">Mandatory Witness Interview</div>
+                                    <div class="item" data-value="on-Department Employee Interview">Non-Department Employee Interview</div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="field">
-                    <label>Serial Number</label>
-                    <div class="three fields">
-                        <div class="field">
-                            <input type="text" placeholder="Badge Number" id="SerialNumber">
                         </div>
                     </div>
                 </div>
@@ -57,47 +60,38 @@
     <div class="ui container">
         <div class="ui form">
             <div class="ui segment">
-                <h2>Incident Summary</h2>
+                <h2>Overview</h2>
                 <div class="field">
-                    <label for="datetimePicker">Date and Time</label>
+                    <label for="datePickerOverview">Date</label>
                     <div class="four fields">
                         <div class="field">
-                            <input type="datetime-local" id="datetimePicker">
+                            <input type="date" id="datePickerOverview">
                         </div>
                         <div class="field">
-                            <button id="todayButton">Set to Today</button>
+                            <button id="todayButtonOverview">Set to Today</button>
                         </div>
                     </div>
                 </div>    
                 <div class="field">
-                    <label>Name of Bitten</label>
+                    <label>Start Time</label>
                     <div class="three fields">
                         <div class="field">
-                            <input type="text" placeholder="Name of Bitten" id="BittenName">
+                            <input type="text" id="startTime" placeholder="HH:MM">
+                        </div>
+                        <div class="field">
+                            <button id="oneHourAgo">One Hour Ago</button>
+                            <button id="twoHoursAgo">Two Hours Ago</button>
                         </div>
                     </div>
                 </div>
                 <div class="field">
-                    <label>Extent of Injuries</label>
+                    <label>End Time</label>
                     <div class="three fields">
                         <div class="field">
-                            <input type="text" placeholder="Extent of Injuries" id="InjuryExtent">
+                            <input type="text" id="endTime" placeholder="HH:MM">
                         </div>
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="FDAttendance">FD Attendance</label>
-                    <div class="three fields" id="FDAttendanceDropdown">
                         <div class="field">
-                            <div class="ui selection search dropdown">
-                                <input type="hidden" name="FDAttendance" id="FDAttendanceInput">
-                                <i class="dropdown icon"></i>
-                                <div class="default text">FD Attendance</div>
-                                <div class="menu">
-                                    <div class="item" data-value="Yes">Yes</div>
-                                    <div class="item" data-value="No">No</div>
-                                </div>
-                            </div>
+                            <button id="nowButton">Now</button>
                         </div>
                     </div>
                 </div>
@@ -107,23 +101,41 @@
     <div class="ui container">
         <div class="ui form">
             <div class="ui segment">
-                <h2>Incident Narrative</h2>
+                <h2>Parties Involved</h2>
                 <div class="field">
-                    <label>Other Officers on Scene</label>
-                    <div id="InvolvedMembersContainer">
+                    <label>Parties Involved</label>
+                    <div id="PartiesInvolvedContainer">
                         <div class="field">
-                            <input type="text" placeholder="Firstname Lastname" id="OtherOfficersName">
+                            <div class="ui selection search dropdown" id="RoleDropdown">
+                                <input type="hidden" name="Role" id="RoleInput">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Select Role</div>
+                                <div class="menu">
+                                    <div class="item" data-value="Investigator">Investigator</div>
+                                    <div class="item" data-value="Witness">Witness</div>
+                                    <div class="item" data-value="Reported Employee">Reported Employee</div>
+                                    <div class="item" data-value="Representative">Representative</div>
+                                </div>
+                            </div>
+                            <input type="text" placeholder="Firstname Lastname" id="InvolvedParty">
                         </div>
                     </div>
                     <button type="button" id="addInput">+</button>
                     <button type="button" id="removeInput">-</button>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui container">
+        <div class="ui form">
+            <div class="ui segment">
+                <h2>Summary & Transcript</h2>
                 <div class="field">
-                    <label for="Narrative">Narrative</label>
-                    <textarea id="Narrative"></textarea>
+                    <label for="Summary">Summary</label>
+                    <textarea id="Summary"></textarea>
                 </div>              
-                <label for="Signature">Signature</label>
-                <input type="text" placeholder="Officer Signature" id="Signature">
+                <label for="Transcript">Transcript</label>
+                <textarea id="Transcript"></textarea>
             </div>
         </div>
     </div>
@@ -153,11 +165,11 @@
         });
 
         $(document).ready(function () {
-            $("#addInput").click(addInputField("#InvolvedMembersContainer", "Firstname Lastname"));
-            $("#removeInput").click(removeInputField("#InvolvedMembersContainer"));
+            $("#addInput").click(addInputField("#PartiesInvolvedContainer"));
+            $("#removeInput").click(removeInputField("#PartiesInvolvedContainer"));
         });
 
-        function addInputField(containerId, placeholderText) {
+        function addInputField(containerId) {
             return function () {
                 const inputFieldsContainer = $(containerId);
                 const newInputField = $("<div>").addClass("field").html('<input type="text" placeholder="' + placeholderText + '" id="newInputField">');
@@ -177,35 +189,35 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
-    const datetimePicker = document.getElementById('datetimePicker');
-    const todayButton = document.getElementById('todayButton');
+    document.addEventListener('DOMContentLoaded', function () {
+        const datetimePicker = document.getElementById('datetimePicker');
+        const todayButton = document.getElementById('todayButton');
 
-    todayButton.addEventListener('click', function () {
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-        const day = String(currentDate.getDate()).padStart(2, '0');
-        const hours = String(currentDate.getHours()).padStart(2, '0');
-        const minutes = String(currentDate.getMinutes()).padStart(2, '0');
-        const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
-        datetimePicker.value = formattedDate;
+        todayButton.addEventListener('click', function () {
+            const currentDate = new Date();
+            const year = currentDate.getFullYear();
+            const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+            const day = String(currentDate.getDate()).padStart(2, '0');
+            const hours = String(currentDate.getHours()).padStart(2, '0');
+            const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+            const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+            datetimePicker.value = formattedDate;
+        });
+
+        datetimePicker.addEventListener('change', function () {
+            const inputDate = new Date(datetimePicker.value);
+            const year = inputDate.getFullYear();
+            const month = String(inputDate.getMonth() + 1).padStart(2, '0');
+            const day = String(inputDate.getDate()).padStart(2, '0');
+            const hours = String(inputDate.getHours()).padStart(2, '0');
+            const minutes = String(inputDate.getMinutes()).padStart(2, '0');
+            const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+            datetimePicker.value = formattedDate;
+        });
     });
 
-    datetimePicker.addEventListener('change', function () {
-        const inputDate = new Date(datetimePicker.value);
-        const year = inputDate.getFullYear();
-        const month = String(inputDate.getMonth() + 1).padStart(2, '0');
-        const day = String(inputDate.getDate()).padStart(2, '0');
-        const hours = String(inputDate.getHours()).padStart(2, '0');
-        const minutes = String(inputDate.getMinutes()).padStart(2, '0');
-        const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
-        datetimePicker.value = formattedDate;
-    });
-});
-
-        function saveDataToLocalStorage() {
-    const data = {
+    function saveDataToLocalStorage() {
+        const data = {
         ICname: $('#ICname').val(),
         DivisionalRankInput: $('#DivisionalRankInput').val(),
         SerialNumber: $('#SerialNumber').val(),
